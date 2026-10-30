@@ -1,4 +1,4 @@
-package abs_test
+package helloworldtest_test
 
 import (
 	"testing"
@@ -8,7 +8,7 @@ import (
 
 func TestHello(t *testing.T) {
 	want := "Hello, world";
-	got := abs.Hello("world", "")
+	got := helloworld.Hello("world", "")
 
 	if want != got {
 		t.Fatalf("Error: want %q, got %q", want, got)
