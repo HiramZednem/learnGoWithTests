@@ -1,26 +1,37 @@
 package abs
 
 import "fmt"
+const (
+	spanish = "Spanish"
+	french = "French"
+	german = "German"
 
-const spanish = "Spanish"
-const french = "French"
-const englishHelloPrefix = "Hello, "
-const spanishHelloPrefix = "Hola, "
-const frenchHelloPrefix = "Bonjour, "
+	englishHelloPrefix = "Hello, "
+	spanishHelloPrefix = "Hola, "
+	frenchHelloPrefix = "Bonjour, "
+	germanHelloPrefix = "Hallo, "
+)
 
 func Hello(name, language string) string {
 	if name == "" {
 		name = "World"
 	}
 
-	if language == spanish {
-		return spanishHelloPrefix + name
-	}
-	if language == french {
-		return frenchHelloPrefix + name
-	}
+	return greetingPrefix(language) + name;
+}
 
-	return englishHelloPrefix + name
+func greetingPrefix(language string) (prefix string) {
+	switch language {
+	case spanish:
+		prefix = spanishHelloPrefix
+	case french:
+		prefix = frenchHelloPrefix
+	case german:
+		prefix = germanHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+	return
 }
 
 func main() {
