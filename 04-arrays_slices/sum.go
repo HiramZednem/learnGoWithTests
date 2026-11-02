@@ -1,5 +1,7 @@
 package arraysslices
 
+import "math"
+
 func Sum(numbers []int) int {
 	var sum int;
 	for _, number := range numbers {
@@ -41,4 +43,36 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	}
 
 	return sums
+}
+
+func FindMaxNumber(numbers []int) int {
+	if (len(numbers) == 0) {
+		return 0;
+	}
+
+	maxNumber := numbers[0]
+
+	// for _, number := range numbers {
+	// 	if maxNumber < number {
+	// 		maxNumber = number
+	// 	}
+	// }
+
+	for i := 1; i < len(numbers); i++ {
+		if maxNumber < numbers[i] {
+			maxNumber = numbers[i]
+		}
+	}
+
+	return maxNumber
+}
+
+func SplitMiddle(slice []int) [2][]int {
+	if len(slice) == 0 {
+		return [2][]int {}
+	}
+
+	
+	// 3/2 = 1.5
+	middle := math.Trunc(float64(len(slice) / 2))
 }

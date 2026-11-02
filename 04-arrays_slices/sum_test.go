@@ -51,3 +51,63 @@ func TestSumAllTails(t *testing.T) {
 
 }
 
+func TestFindMaxNumber(t *testing.T) {
+	assert := func(t *testing.T,got, expected int, numbers []int) {
+		t.Helper()
+		if expected != got {
+			t.Errorf("got %d expected %d, given: %v", got, expected, numbers)
+		}
+	}
+	t.Run("get max number from slice", func(t *testing.T) {
+		numbers := []int{3,6,4,1,0,8}
+		expected := 8
+		got := FindMaxNumber(numbers)
+		assert(t, got, expected, numbers)
+	})
+
+	t.Run("get max number from empty slice", func (t *testing.T){
+		numbers := []int{}
+		expected := 0;
+		got := FindMaxNumber(numbers)
+		assert(t, got, expected, numbers)
+	})
+	
+}
+
+func TestSplitMiddle(t *testing.T) {
+	compareSlices := func (t *testing.T, got, expected [2][]int, given []int) {
+		t.Helper()
+		for i := 0; i < 2; i++ {
+			if !slices.Equal(got[i], expected[i]) {
+				t.Errorf("got %v expected %v given %v", got, expected, given)
+				break;
+			}
+		}
+	}
+	t.Run("Split Empty Slice", func(t *testing.T){
+		slice := []int{}	
+		got := SplitMiddle(slice)
+		expected := [2][]int{}
+		compareSlices(t, got, expected, slice)
+	})
+
+	t.Run("Split Even Slice", func(t *testing.T){
+		slice := []int{1, 2, 3, 4}	
+		got := SplitMiddle(slice)
+		expected := [2][]int{
+			{1, 2}, 
+			{3, 4},
+		}
+		compareSlices(t, got, expected, slice)
+	})
+
+	t.Run("Split Odd Slice", func(t *testing.T){
+		slice := []int{1, 2, 3, }	
+		got := SplitMiddle(slice)
+		expected := [2][]int{
+			{1,}, 
+			{2, 3},
+		}
+		compareSlices(t,got,expected, slice)
+	})
+}
