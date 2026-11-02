@@ -72,7 +72,12 @@ func SplitMiddle(slice []int) [2][]int {
 		return [2][]int {}
 	}
 
-	
-	// 3/2 = 1.5
-	middle := math.Trunc(float64(len(slice) / 2))
+	middle := int(math.Trunc(float64(len(slice) / 2)))
+	left := slice[:middle]
+	rigth := slice[middle:]
+
+	return [2][]int{
+		left,
+		rigth,
+	}
 }
