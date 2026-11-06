@@ -25,6 +25,7 @@ func TestArea(t *testing.T) {
 		{name: "Triangle", shape: Triangle{Base: 12, Height: 6}, hasArea: 36.0},
 	}
 
+	// Table Driven Test
 	for _, tt := range areaTest {
 		t.Run(tt.name, func(t *testing.T){
 			got := tt.shape.Area()
